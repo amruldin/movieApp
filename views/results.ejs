@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <form action="/results" method="GET">
+            <input type="text" placeholder="Search for movie title" name="movieTitle">
+            <input type="submit">
+
+        </form>
+
+        <div class="row">
+
+            <div class="col">
+            <ul>
+                <% if(movieInfo.length > 0 ) {%>
+                    
+                            <h1>Title: <%= movieInfo["title"] %></h1>
+                            <h2>Year: <%= movieInfo["year"] %></h2>
+                            <h2>Released on : <%= movieInfo.released %></h2>
+                            <h2>Runtime :<%= movieInfo.runtime %></h2>
+                            <h1>Director: <%= movieInfo.director %></h1>
+                            <h2>Actors : <%= movieInfo.actors %></h2>
+                            <h2>language : <%= movieInfo.language %></h2>
+                            <h2>Country : <%= movieInfo.country %></h2>
+                            <h2>Box Office : <%= movieInfo.boxOffice %></h2>
+                            <h2>Genre : <%= movieInfo.genre %></h2>
+                            <h2>Screenplay : <%= movieInfo.write %></h2>
+
+
+                        
+
+
+
+                <%} else {%>
+                    <h1>info not found</h1>
+                    <%}%>
+            </ul>
+
+
+
+            </div>
+
+         
+
+
+
+        </div>
+       
+
+
+
+      </div>
+
+
+
+
+
+</body>
+</html>
