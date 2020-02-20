@@ -12,11 +12,10 @@ const indexRouter = require('../controller/control');
 
 
 
-router.get('/results', indexRouter.getResults);
-
-
-
 router.get('/',indexRouter.getIndexPage);
+router.get('/results', indexRouter.getResults);
+router.get('/search',indexRouter.search);
+
 
 
 router.get('*', indexRouter.pageNotFound);

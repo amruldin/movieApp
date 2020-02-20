@@ -1,68 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<%- include('./partials/header') %>
 
+<div class="container">
+        
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">Learn about your favorite movie by typing its title</h1>
+        <p class="lead">Discover all behind the scenes, techical, and crew information!</p>
 
-    <title><%= title %></title>
-</head>
-<body>
-    <div class="container-fluid">
-
-        <form action="/results" method="GET">
-            <input type="text" placeholder="Search for movie title" name="movieTitle">
-            <input type="submit">
-
+        <form class="form-inline" action="/search" method="GET">
+            <div class="form-group">
+            <input class="form-control form-control-lg" type="text" placeholder="Movie Title" name="movieTitle" required>
+            <button type="submit" class="btn btn-primary mb-2 btn-lg submitBtn">Search</button>
+            </div>
         </form>
 
-        <div class="row">
-
-            <div class="col">
-            <ul>
-                <% if(movieInfo.length > 0 ) {%>
-                    
-                            <h1>Title: <%= movieInfo["title"] %></h1>
-                            <h2>Year: <%= movieInfo["year"] %></h2>
-                            <h2>Released on : <%= movieInfo.released %></h2>
-                            <h2>Runtime :<%= movieInfo.runtime %></h2>
-                            <h1>Director: <%= movieInfo.director %></h1>
-                            <h2>Actors : <%= movieInfo.actors %></h2>
-                            <h2>language : <%= movieInfo.language %></h2>
-                            <h2>Country : <%= movieInfo.country %></h2>
-                            <h2>Box Office : <%= movieInfo.boxOffice %></h2>
-                            <h2>Genre : <%= movieInfo.genre %></h2>
-                            <h2>Screenplay : <%= movieInfo.write %></h2>
-
-
-                        
-
-
-
-                <%} else {%>
-                    <h1>info not found</h1>
-                    <%}%>
-            </ul>
-
-
-
-            </div>
-
-         
-
-
-
         </div>
+    </div>
+    <div class="container">
+    <div class="card center" style="width: 50%;">
+
+        <% if(movieInfo.length > 0 ) {%>
+            <% for(let movie of movieInfo){ %>
+                    
+                    <!-- <h1>Title: <%= movie.title %></h1>
+                    <h2>Year: <%= movie.year %></h2>
+                    <h2>Released on : <%= movie.released %></h2>
+                    <h2>Runtime :<%= movie.runtime %></h2>
+                    <h1>Director: <%= movie.director %></h1>
+                    <h2>Actors : <%= movie.actors %></h2>
+                    <h2>language : <%= movie.language %></h2>
+                    <h2>Country : <%= movie.country %></h2>
+                    <h2>Box Office : <%= movie.boxOffice %></h2>
+                    <h2>Genre : <%= movie.genre %></h2>
+                    <h2>Screenplay : <%= movie.write %></h2>
+               
+                    <img src="<%= movie.poster %>" alt="<%=movie.title%>"> -->
+                    
+                    <img class="card-img-top" src="<%= movie.poster %>" alt="<%=movie.title%>">
+                    <div class="card-body">
+                    <h5 class="card-title">Title: <%= movie.title %></h5>
+                    <!-- <p class="card-text">Actors : <%= movie.actors %></p> -->
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Year: <%= movie.year %></li>
+                    <li class="list-group-item">Released on : <%= movie.released %></li>
+                    <li class="list-group-item">Runtime :<%= movie.runtime %></li>
+                    <li class="list-group-item"><strong>Director: <%= movie.director %></strong></li>
+                    <li class="list-group-item">Actors : <%= movie.actors %></li>
+                    <li class="list-group-item">language : <%= movie.language %></li>
+                    <li class="list-group-item">Country : <%= movie.country %></li>
+                    <li class="list-group-item">Box Office : <%= movie.boxOffice %></li>
+                    <li class="list-group-item">Genre : <%= movie.genre %></li>
+                    <li class="list-group-item">Screenplay : <%= movie.write %></li>
+                    
+                    </ul>
+                    
+                
+              
+
+            <%}%>
+                
+
+
+        <%} else {%>
+            <h1>info not found</h1>
+        <%}%>
+    </div>
+
+    </div>
+    
+
+
        
+        
+
+     
+            
+ </div>
 
 
 
-      </div>
 
-
-
-
-
-</body>
-</html>
+      <%- include('./partials/footer') %>
